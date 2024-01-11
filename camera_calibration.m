@@ -16,7 +16,7 @@ image_type = 'YUY2_1280x720'; %Depende da camara, usar o melhor depois a testar
 % start(vid)
 
 
-cam = webcam(2);
+cam = webcam(1);
 % img = snapshot(cam);
 % imshow(img);
 % pause
