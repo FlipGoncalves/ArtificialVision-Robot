@@ -1,0 +1,366 @@
+/PROG  RI_G9_BF
+/ATTR
+OWNER		= MNEDITOR;
+COMMENT		= "";
+PROG_SIZE	= 3427;
+CREATE		= DATE 23-12-14  TIME 16:21:30;
+MODIFIED	= DATE 23-12-14  TIME 18:23:18;
+FILE_NAME	= ;
+VERSION		= 0;
+LINE_COUNT	= 56;
+MEMORY_SIZE	= 3719;
+PROTECT		= READ_WRITE;
+TCD:  STACK_SIZE	= 0,
+      TASK_PRIORITY	= 50,
+      TIME_SLICE	= 0,
+      BUSY_LAMP_OFF	= 0,
+      ABORT_REQUEST	= 0,
+      PAUSE_REQUEST	= 0;
+DEFAULT_GROUP	= 1,*,*,*,*;
+CONTROL_CODE	= 00000000 00000000;
+/APPL
+/MN
+   1:  CALL VACUUM_DEACT    ;
+   2:J P[2] 100% FINE    ;
+   3:J P[1] 100% FINE    ;
+   4:J P[3] 100% FINE    ;
+   5:  CALL VACUUM_ACT    ;
+   6:J P[4] 100% FINE    ;
+   7:C P[31]    
+    :  P[32] 400mm/sec CNT100    ;
+   8:J P[5] 100% FINE    ;
+   9:J P[6] 100% FINE    ;
+  10:  CALL VACUUM_DEACT    ;
+  11:J P[7] 100% FINE    ;
+  12:L P[8] 4000mm/sec FINE    ;
+  13:J P[9] 100% FINE    ;
+  14:  CALL VACUUM_ACT    ;
+  15:J P[10] 100% FINE    ;
+  16:C P[33]    
+    :  P[34] 400mm/sec CNT100    ;
+  17:J P[11] 100% FINE    ;
+  18:J P[12] 100% FINE    ;
+  19:  CALL VACUUM_DEACT    ;
+  20:J P[13] 100% FINE    ;
+  21:L P[14] 4000mm/sec FINE    ;
+  22:J P[15] 100% FINE    ;
+  23:  CALL VACUUM_ACT    ;
+  24:J P[16] 100% FINE    ;
+  25:C P[35]    
+    :  P[36] 400mm/sec CNT100    ;
+  26:J P[17] 100% FINE    ;
+  27:J P[18] 100% FINE    ;
+  28:  CALL VACUUM_DEACT    ;
+  29:J P[19] 100% FINE    ;
+  30:L P[20] 4000mm/sec FINE    ;
+  31:J P[21] 100% FINE    ;
+  32:  CALL VACUUM_ACT    ;
+  33:J P[22] 100% FINE    ;
+  34:C P[37]    
+    :  P[38] 400mm/sec CNT100    ;
+  35:J P[23] 100% FINE    ;
+  36:J P[24] 100% FINE    ;
+  37:  CALL VACUUM_DEACT    ;
+  38:J P[25] 100% FINE    ;
+  39:L P[26] 4000mm/sec FINE    ;
+  40:J P[27] 100% FINE    ;
+  41:  CALL VACUUM_ACT    ;
+  42:J P[28] 100% FINE    ;
+  43:C P[39]    
+    :  P[40] 400mm/sec CNT100    ;
+  44:J P[29] 100% FINE    ;
+  45:J P[30] 100% FINE    ;
+  46:  CALL VACUUM_DEACT    ;
+  47:J P[41] 100% FINE    ;
+  48:J P[42] 100% FINE    ;
+  49:J P[43] 100% FINE    ;
+  50:  CALL VACUUM_ACT    ;
+  51:J P[44] 100% FINE    ;
+  52:L P[45] 4000mm/sec FINE    ;
+  53:J P[47] 100% FINE    ;
+  54:  CALL VACUUM_DEACT    ;
+  55:J P[46] 100% FINE    ;
+  56:  END ;
+/POS
+P[1]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   571.777  mm,	Y =   -11.277  mm,	Z =     5.457  mm,
+	W =  -178.751 deg,	P =     -.935 deg,	R =   -94.429 deg
+};
+P[2]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   401.863  mm,	Y =     -.910  mm,	Z =   215.719  mm,
+	W =  -178.748 deg,	P =     -.934 deg,	R =   -94.426 deg
+};
+P[3]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   571.770  mm,	Y =   -11.278  mm,	Z =  -118.399  mm,
+	W =  -178.753 deg,	P =     -.935 deg,	R =   -94.430 deg
+};
+P[4]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   571.767  mm,	Y =   -11.277  mm,	Z =    -9.550  mm,
+	W =  -178.755 deg,	P =     -.935 deg,	R =   -94.428 deg
+};
+P[5]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   206.099  mm,	Y =  -303.783  mm,	Z =    -9.566  mm,
+	W =  -178.756 deg,	P =     -.932 deg,	R =   -94.420 deg
+};
+P[6]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   206.099  mm,	Y =  -303.779  mm,	Z =  -137.000  mm,
+	W =  -178.757 deg,	P =     -.931 deg,	R =   -94.420 deg
+};
+P[7]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   206.104  mm,	Y =  -303.785  mm,	Z =    25.011  mm,
+	W =  -178.756 deg,	P =     -.934 deg,	R =   -94.423 deg
+};
+P[8]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   575.401  mm,	Y =   -12.240  mm,	Z =    33.487  mm,
+	W =  -178.768 deg,	P =     -.934 deg,	R =   -94.423 deg
+};
+P[9]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   575.393  mm,	Y =   -12.239  mm,	Z =  -130.000  mm,
+	W =  -178.771 deg,	P =     -.934 deg,	R =   -94.424 deg
+};
+P[10]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   575.375  mm,	Y =   -12.232  mm,	Z =    -6.310  mm,
+	W =  -178.777 deg,	P =     -.934 deg,	R =   -94.423 deg
+};
+P[11]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   323.700  mm,	Y =  -282.289  mm,	Z =    43.728  mm,
+	W =  -178.765 deg,	P =     -.942 deg,	R =   -94.408 deg
+};
+P[12]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   329.440  mm,	Y =  -295.096  mm,	Z =  -146.500  mm,
+	W =  -178.763 deg,	P =     -.943 deg,	R =   -94.423 deg
+};
+P[13]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   329.452  mm,	Y =  -295.106  mm,	Z =    17.687  mm,
+	W =  -178.760 deg,	P =     -.944 deg,	R =   -94.423 deg
+};
+P[14]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   573.692  mm,	Y =    -1.906  mm,	Z =    21.277  mm,
+	W =  -178.772 deg,	P =     -.935 deg,	R =   -94.432 deg
+};
+P[15]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   573.685  mm,	Y =    -1.907  mm,	Z =  -136.000  mm,
+	W =  -178.774 deg,	P =     -.935 deg,	R =   -94.434 deg
+};
+P[16]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   573.687  mm,	Y =    -1.906  mm,	Z =    35.674  mm,
+	W =  -178.773 deg,	P =     -.935 deg,	R =   -94.432 deg
+};
+P[17]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   437.178  mm,	Y =  -307.173  mm,	Z =   -17.911  mm,
+	W =  -178.775 deg,	P =     -.933 deg,	R =   -94.430 deg
+};
+P[18]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   437.173  mm,	Y =  -307.168  mm,	Z =  -151.557  mm,
+	W =  -178.777 deg,	P =     -.932 deg,	R =   -94.432 deg
+};
+P[19]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   444.077  mm,	Y =  -298.531  mm,	Z =   -20.243  mm,
+	W =  -178.778 deg,	P =     -.930 deg,	R =   -94.430 deg
+};
+P[20]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   566.188  mm,	Y =    -9.397  mm,	Z =   -23.691  mm,
+	W =  -178.779 deg,	P =     -.930 deg,	R =   -94.430 deg
+};
+P[21]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   566.188  mm,	Y =    -9.400  mm,	Z =  -146.967  mm,
+	W =  -178.780 deg,	P =     -.930 deg,	R =   -94.432 deg
+};
+P[22]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   566.193  mm,	Y =    -9.400  mm,	Z =    12.043  mm,
+	W =  -178.778 deg,	P =     -.929 deg,	R =   -94.431 deg
+};
+P[23]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   272.771  mm,	Y =  -295.345  mm,	Z =    24.170  mm,
+	W =  -178.775 deg,	P =     -.932 deg,	R =   -94.431 deg
+};
+P[24]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   265.000  mm,	Y =  -295.338  mm,	Z =   -89.888  mm,
+	W =  -178.777 deg,	P =     -.930 deg,	R =   -94.431 deg
+};
+P[25]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   272.769  mm,	Y =  -295.338  mm,	Z =    50.077  mm,
+	W =  -178.777 deg,	P =     -.930 deg,	R =   -94.431 deg
+};
+P[26]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   578.047  mm,	Y =   -13.095  mm,	Z =    70.816  mm,
+	W =  -178.776 deg,	P =     -.931 deg,	R =   -94.431 deg
+};
+P[27]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   578.042  mm,	Y =   -13.094  mm,	Z =  -152.000  mm,
+	W =  -178.778 deg,	P =     -.931 deg,	R =   -94.432 deg
+};
+P[28]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   578.034  mm,	Y =   -13.092  mm,	Z =    40.834  mm,
+	W =  -178.780 deg,	P =     -.931 deg,	R =   -94.429 deg
+};
+P[29]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   381.041  mm,	Y =  -301.089  mm,	Z =    27.008  mm,
+	W =  -178.781 deg,	P =     -.931 deg,	R =   -94.429 deg
+};
+P[30]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   381.035  mm,	Y =  -301.084  mm,	Z =   -89.935  mm,
+	W =  -178.783 deg,	P =     -.930 deg,	R =   -94.428 deg
+};
+P[31]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   487.090  mm,	Y =  -210.025  mm,	Z =    -9.525  mm,
+	W =  -178.752 deg,	P =     -.935 deg,	R =   -94.432 deg
+};
+P[32]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   206.116  mm,	Y =  -303.777  mm,	Z =    -9.604  mm,
+	W =  -178.753 deg,	P =     -.936 deg,	R =   -94.417 deg
+};
+P[33]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   327.698  mm,	Y =  -118.818  mm,	Z =    97.339  mm,
+	W =  -178.780 deg,	P =     -.933 deg,	R =   -94.426 deg
+};
+P[34]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   329.440  mm,	Y =  -295.116  mm,	Z =    41.817  mm,
+	W =  -178.764 deg,	P =     -.942 deg,	R =   -94.423 deg
+};
+P[35]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   314.489  mm,	Y =   -79.928  mm,	Z =   -59.350  mm,
+	W =  -178.767 deg,	P =     -.934 deg,	R =   -94.424 deg
+};
+P[36]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   437.211  mm,	Y =  -307.159  mm,	Z =   -17.935  mm,
+	W =  -178.776 deg,	P =     -.932 deg,	R =   -94.427 deg
+};
+P[37]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   422.200  mm,	Y =  -185.104  mm,	Z =    32.190  mm,
+	W =  -176.322 deg,	P =   -29.635 deg,	R =   -95.103 deg
+};
+P[38]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   272.746  mm,	Y =  -295.352  mm,	Z =    24.162  mm,
+	W =  -178.776 deg,	P =     -.931 deg,	R =   -94.432 deg
+};
+P[39]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   347.630  mm,	Y =   -75.510  mm,	Z =    40.814  mm,
+	W =  -159.594 deg,	P =   -76.791 deg,	R =  -109.744 deg
+};
+P[40]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   381.066  mm,	Y =  -301.104  mm,	Z =    26.954  mm,
+	W =  -178.779 deg,	P =     -.931 deg,	R =   -94.428 deg
+};
+P[41]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   381.034  mm,	Y =    -4.437  mm,	Z =   247.011  mm,
+	W =  -178.784 deg,	P =     -.929 deg,	R =   -94.427 deg
+};
+P[42]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   441.858  mm,	Y =   340.322  mm,	Z =    92.711  mm,
+	W =  -178.768 deg,	P =     -.924 deg,	R =   -94.425 deg
+};
+P[43]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   441.860  mm,	Y =   340.318  mm,	Z =  -107.932  mm,
+	W =  -178.768 deg,	P =     -.924 deg,	R =   -94.424 deg
+};
+P[44]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   441.854  mm,	Y =   340.308  mm,	Z =   -88.760  mm,
+	W =  -178.771 deg,	P =     -.926 deg,	R =   -94.425 deg
+};
+P[45]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   349.688  mm,	Y =  -443.052  mm,	Z =   -88.770  mm,
+	W =  -178.772 deg,	P =     -.926 deg,	R =   -94.425 deg
+};
+P[46]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   402.644  mm,	Y =     -.894  mm,	Z =   215.035  mm,
+	W =  -178.779 deg,	P =     -.937 deg,	R =   -94.424 deg
+};
+P[47]{
+   GP1:
+	UF : 5, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   402.625  mm,	Y =     -.895  mm,	Z =   -99.871  mm,
+	W =  -178.784 deg,	P =     -.938 deg,	R =   -94.425 deg
+};
