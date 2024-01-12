@@ -11,7 +11,7 @@ function robCOMM = Comm_Open(port, ip)
 
 robCOMM.port = port;                                % Defines the COMM variables
 robCOMM.ip = ip;       
-robCOMM.handle=tcpip(robCOMM.ip, robCOMM.port);     % Creates the tcpip object
+robCOMM.handle=tcpclient(robCOMM.ip, robCOMM.port);     % Creates the tcpip object
 set(robCOMM.handle, 'Timeout', 1);                  % 1 sec timeout
 fopen(robCOMM.handle);                              % Opens the object
 end

@@ -7,8 +7,8 @@
 clear all; close all; clc;
 %% OPEN THE PORT CONNECTION WITH MANIPULATOR HANDLER - FANUC (WORKING)
 
-robCOMM = Comm_Open(4900,'192.168.0.231');      %IP of the FANUC [LR MATE 200ID - SMALL ONE]
-%robCOMM = Comm_Open(4900,'192.168.0.230');       %IP of the FANUC [M-6 IBB 6S - BIGGER ONE]
+%robCOMM = Comm_Open(4900,'192.168.0.231');      %IP of the FANUC [LR MATE 200ID - SMALL ONE]
+robCOMM = Comm_Open(4900,'192.168.0.230');       %IP of the FANUC [M-6 IBB 6S - BIGGER ONE]
 %Note: To check if the connection was sucessfull robCOMM.handle      
 
 %% CLOSE THE CONNECTION WITH FANUC FANUC
@@ -16,8 +16,8 @@ Comm_Close(robCOMM);
 
 %% MOVING THE ROBOT BY CARTESIAN COORDINATES (ABSOLUTE)
 
-%Mov_Cart_Abs(robCOMM,106,-2,273,-177,-15,-17,0,1,1,0,0,0,1,1000,1);            %Rest position
-Mov_Cart_Abs(robCOMM,387,-3,245,179,-1,-16,0,1,1,0,0,0,1,1000,1);             %Test position
+Mov_Cart_Abs(robCOMM,106,-2,273,-177,-15,-17,0,1,1,0,0,0,1,1000,1);            %Rest position
+%Mov_Cart_Abs(robCOMM,387,-3,245,179,-1,-16,0,1,1,0,0,0,1,1000,1);             %Test position
 %Parameters: robCOMM, [X Y Z W P R R1 R2 R3 R4 R5 R6 Ty Sp Md]
 %Note: To put this thing working you have to move first the damm joints!!!!
 
@@ -29,8 +29,8 @@ Mov_Joints(robCOMM,0,-51,28,1,-103,344,0,500,1);                       %Rest pos
 
 %% GETTING THE COORDINATES OF THE GRIPPER OF THE ROBOT: 
 
-Pos = Get_Cart_Abs(robCOMM);                                            %Get the position of the hand in cartesian coordinates
-%Joints = Get_Joints(robCOMM);                                           %Get the position of the hand in joints coordinates
+Pos = Get_Cart_Abs(robCOMM)                                         %Get the position of the hand in cartesian coordinates
+Joints = Get_Joints(robCOMM)                                           %Get the position of the hand in joints coordinates
 
 %% DEFINES THE TRAJECTORY OR PATH OF THE ROBOT THEN IT MAKES HIM MOVE
 
@@ -54,8 +54,8 @@ Joints = Get_IKin(robCOMM,388,-4,198,177,-1,-16);                         %It co
 
 %% OPEN/CLOSE HAND
 
-%Gripper_Open(robCOMM);
-%Gripper_Close(robCOMM);
+% Gripper_Open(robCOMM);
+Gripper_Close(robCOMM, 1);
 
 %% CHECK IF THE POSITION IN CARTESIAN COORDIANTES IS IN RANGE OF THE ROBOT
 
