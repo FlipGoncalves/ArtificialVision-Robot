@@ -25,22 +25,21 @@ fopen(robCOMM.handle);
 %%% Find Objects and Move the Robot
 cam = webcam(2);
 
-Points = [];
 image = snapshot(cam);
-[image, newOrigin] = undistortImage(image, cameraParams, 'OutputView', 'full');
-[imagePoints, boardSize] = detectCheckerboardPoints(image);
-
+[im, newOrigin] = undistortImage(image, cameraParams, 'OutputView', 'full');
+[imagePoints, boardSize] = detectCheckerboardPoints(im);
 [R, t] = extrinsics(imagePoints, cameraParams.WorldPoints, cameraParams);
 
-% Extract the individual color channels
-redChannel = image(:,:,1); % Red channel
-greenChannel = image(:,:,2); % Green channel
-blueChannel = image(:,:,3); % Blue channel
+% figure;
+% imshow(im); hold on; plot(imagePoints(:,1), imagePoints(:,2), 'g*');
+% plot(imagePoints(1,1), imagePoints(1,2), 'sr');
+% plot(imagePoints(1,1)+10, imagePoints(1,2), 'sy');
+% plot(imagePoints(1,1), imagePoints(1,2)+10, 'sb');
 
-% Create a binary mask for red and greend objects based on a threshold
-threshold = 100;
-redObjectsMask = (redChannel > threshold) & (greenChannel < threshold) & (blueChannel < threshold);
-greenObjectsMask = (greenChannel > threshold) & (redChannel < threshold) & (blueChannel < threshold);
+[H,S,V] = rgb2hsv(im);
+
+greenObjectsMask   = (H > 0.2 & H < 0.5 & S > 0.2 & S < 0.8 & V > 0.2);
+redObjectsMask = (H > 0.7 & H < 1 & S > 0.5 & S < 1 & V > 0.2);
 
 % Label connected components in the binary mask
 labeledRedImage = bwlabel(redObjectsMask);
@@ -58,22 +57,11 @@ Greenstats = regionprops(labeledGreenImage, 'Centroid', 'Area');
 largestRedAreaCentroid = Redstats(maxRedAreaIndex).Centroid;
 largestGreenAreaCentroid = Greenstats(maxGreenAreaIndex).Centroid;
 
-subplot(1, 2, 1);
-imshow(image);
-title('Red Objects');
-hold on;
-plot(largestRedAreaCentroid(1), largestRedAreaCentroid(2), 'r*'); % Mark centroid with a red asterisk
-
-subplot(1, 2, 2);
-imshow(image);
-title('Green Objects');
-hold on;
-plot(largestGreenAreaCentroid(1), largestGreenAreaCentroid(2), 'r*'); % Mark centroid with a red asterisk
-
-Points = [largestRedAreaCentroid; largestGreenAreaCentroid]
-pause()
+Points = [largestRedAreaCentroid; largestGreenAreaCentroid];
 
 for i=1:size(Points, 1)
+    
+    input("Press <ENTER> to continue")
 
     % Get robot position
     fprintf(robCOMM.handle, 'GETCRCPOS');
@@ -97,19 +85,35 @@ for i=1:size(Points, 1)
     end
     Pos
 
-    object = pointsToWorld(cameraParams, R, t, [Points(i,1), Points(i,2)])
-    P = [Pos(1,1)-object(1), Pos(1,2)-object(2)]
+    T = [0 1 0  335
+         1 0 0 -445
+         0 0 0 -160
+         0 0 0  0];
 
-    % Move the Robot
-    % Mov_Cart_Inc(robCOMM,P(1),P(2),164-Pos(1,3),0,0,1,1)
+    object = [pointsToWorld(cameraParams, R, t, [Points(i,1), Points(i,2)]) 1 1];
+    object_robo = T * object'
+    P = [object_robo(1)-Pos(1,1), object_robo(2)-Pos(1,2)]
+
+    % Turn On Vacuum
+    Gripper_Close(robCOMM, 2);
+    pause(1);
+    % input("Press <ENTER> to continue")
+
     % Robot goes down to pick up object
-    Mov_Cart_Inc(robCOMM,0,0,0-Pos(1,3),0,0,1,1)
-    pause(1)
-    % Gripper_Open(robCOMM, 1);
-    pause(1)
+    Pz = 164-Pos(1,3);
+    Mov_Cart_Inc(robCOMM,P(1),P(2),164-Pos(1,3),0,0,1,1)
+    pause(5);
+    % input("Press <ENTER> to continue")
+
     % Robot goes Up
-    Mov_Cart_Inc(robCOMM,0,0,160,0,0,1,1)
-    pause(1)
+    Mov_Cart_Inc(robCOMM,0,0,-160-Pz,0,0,1,1)
+    pause(5);
+    % input("Press <ENTER> to continue")
+
+    % Turn Off Vacuum
+    Gripper_Open(robCOMM, 2);
+    pause(1);
+    % input("Press <ENTER> to continue")
 end
 
 fprintf("DONE\n");
