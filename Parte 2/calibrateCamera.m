@@ -1,4 +1,4 @@
-function cameraParams = calibrateCamera(win)
+function cameraParams = calibrateCamera(win, wbcm)
     
     if win == 0
         videoOS = 'linuxvideo';
@@ -14,7 +14,7 @@ function cameraParams = calibrateCamera(win)
         camnum = 1;         % numero da camara do bus (USB,firewire)
         image_type = 'YUY2_1280x720'; %Depende da camara, usar o melhor depois a testar
         
-        cam = webcam(2);
+        cam = webcam(wbcm);
         CC = [];
         NFC = 15;
         
@@ -51,7 +51,7 @@ function cameraParams = calibrateCamera(win)
     
         % save camera parameters
         save('camera_params.mat', 'cameraParams');
-        
+
 
         try
             for i=1:NFC
