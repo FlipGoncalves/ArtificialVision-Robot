@@ -38,26 +38,36 @@ image = snapshot(cam);
 
 [H,S,V] = rgb2hsv(im);
 
-greenObjectsMask   = (H > 0.2 & H < 0.5 & S > 0.2 & S < 0.8 & V > 0.2);
-redObjectsMask = (H > 0.7 & H < 1 & S > 0.5 & S < 1 & V > 0.2);
+greenObjectsMask = (H > 0.2 & H < 0.5 & S > 0.2 & S < 0.8 & V > 0.2);
+redObjectsMask   = (H > 0.7 & H < 1.0 & S > 0.5 & S < 1.0 & V > 0.2);
+blueObjectMask   = (H > 0.5 & H < 0.8 & S > 0.5 & S < 1.0 & V > 0.2);
+YellowObjectMask = (H > 0.0 & H < 0.2 & S > 0.5 & S < 1.0 & V > 0.2);
 
 % Label connected components in the binary mask
 labeledRedImage = bwlabel(redObjectsMask);
 labeledGreenImage = bwlabel(greenObjectsMask);
+labeledBlueImage = bwlabel(blueObjectsMask);
+labeledYellowImage = bwlabel(yellowObjectsMask);
 
 % Calculate region properties, including centroids
 Redstats = regionprops(labeledRedImage, 'Centroid', 'Area');
 Greenstats = regionprops(labeledGreenImage, 'Centroid', 'Area');
+Bluestats = regionprops(labeledBlueImage, 'Centroid', 'Area');
+Yellowstats = regionprops(labeledYellowImage, 'Centroid', 'Area');
 
 % Find the index of the region with the largest area
 [~, maxRedAreaIndex] = max([Redstats.Area]);
 [~, maxGreenAreaIndex] = max([Greenstats.Area]);
+[~, maxBlueAreaIndex] = max([Bluestats.Area]);
+[~, maxYellowAreaIndex] = max([Yellowstats.Area]);
 
 % Get the centroid of the region with the largest area
 largestRedAreaCentroid = Redstats(maxRedAreaIndex).Centroid;
 largestGreenAreaCentroid = Greenstats(maxGreenAreaIndex).Centroid;
+largestBlueAreaCentroid = Greenstats(maxBlueAreaIndex).Centroid;
+largestYellowAreaCentroid = Yellowstats(maxYellowAreaIndex).Centroid;
 
-Points = [largestRedAreaCentroid; largestGreenAreaCentroid];
+Points = [largestRedAreaCentroid; largestGreenAreaCentroid; largestBlueAreaCentroid; largestYellowAreaCentroid  ];
 
 for i=1:size(Points, 1)
     
